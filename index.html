@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOODPAN | Εκθεσιακός Χώρος Ξυλουργικών Κατασκευών</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#E6C687',
+                            500: '#D4AF37',
+                            600: '#C5A059',
+                            700: '#A38136'
+                        },
+                        obsidian: {
+                            900: '#0A0A0A',
+                            800: '#121214',
+                            700: '#1A1A1E',
+                            600: '#26262B'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0A0A0A;
+            color: #E2E8F0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .font-serif-title {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0CA 0%, #D4AF37 50%, #997828 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-glow {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.08);
+        }
+        .gold-border-glow:hover {
+            border-color: rgba(212, 175, 55, 0.7);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-obsidian-900 text-slate-200 antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- FIXED TOP NAVBAR (Always Visible) -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-obsidian-900/95 backdrop-blur-md border-b border-gold-500/30 shadow-2xl transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#home" onclick="showTab('home')" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-sm border border-gold-500/60 bg-gradient-to-br from-obsidian-700 to-obsidian-900 flex items-center justify-center group-hover:border-gold-400 transition-colors">
+                        <span class="font-serif-title text-2xl font-bold gold-gradient-text">W</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif-title text-2xl font-bold tracking-widest text-white group-hover:text-gold-400 transition-colors">WOOD<span class="gold-gradient-text">PAN</span></span>
+                        <span class="text-[9px] uppercase tracking-[0.3em] text-gray-400 -mt-1">Architectural Woodcraft</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-3">
+                    <button onclick="showTab('home')" id="nav-home" class="nav-btn px-3 py-2 text-xs lg:text-sm font-medium tracking-wider uppercase transition-all duration-200 text-gold-400 border-b-2 border-gold-500">
+                        ΑΡΧΙΚΗ
+                    </button>
+                    <button onclick="showTab('kitchens')" id="nav-kitchens" class="nav-btn px-3 py-2 text-xs lg:text-sm font-medium tracking-wider uppercase transition-all duration-200 text-gray-300 hover:text-gold-400 border-b-2 border-transparent">
+                        ΚΟΥΖΙΝΕΣ
+                    </button>
+                    <button onclick="showTab('wardrobes')" id="nav-wardrobes" class="nav-btn px-3 py-2 text-xs lg:text-sm font-medium tracking-wider uppercase transition-all duration-200 text-gray-300 hover:text-gold-400 border-b-2 border-transparent">
+                        ΝΤΟΥΛΑΠΕΣ
+                    </button>
+                    <button onclick="showTab('doors')" id="nav-doors" class="nav-btn px-3 py-2 text-xs lg:text-sm font-medium tracking-wider uppercase transition-all duration-200 text-gray-300 hover:text-gold-400 border-b-2 border-transparent">
+                        ΠΟΡΤΕΣ
+                    </button>
+                    <button onclick="showTab('custom')" id="nav-custom" class="nav-btn px-3 py-2 text-xs lg:text-sm font-medium tracking-wider uppercase transition-all duration-200 text-gray-300 hover:text-gold-400 border-b-2 border-transparent">
+                        ΕΙΔΙΚΕΣ ΚΑΤΑΣΚΕΥΕΣ
+                    </button>
+                    <button onclick="showTab('contact')" id="nav-contact" class="nav-btn px-3 py-2 text-xs lg:text-sm font-medium tracking-wider uppercase transition-all duration-200 text-gray-300 hover:text-gold-400 border-b-2 border-transparent">
+                        ΕΠΙΚΟΙΝΩΝΙΑ
+                    </button>
+                </nav>
+
+                <!-- Direct Phone CTA -->
+                <div class="hidden lg:flex items-center">
+                    <a href="tel:+302100000000" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-obsidian-900 bg-gold-500 hover:bg-gold-400 rounded-sm transition-colors shadow-md">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>210 0000000</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-gold-400 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-obsidian-800 border-b border-gold-500/20 px-4 pt-2 pb-6 space-y-2">
+            <button onclick="showTab('home'); toggleMobileMenu()" class="block text-left w-full py-2 text-sm font-medium tracking-wider uppercase text-gold-400">ΑΡΧΙΚΗ</button>
+            <button onclick="showTab('kitchens'); toggleMobileMenu()" class="block text-left w-full py-2 text-sm font-medium tracking-wider uppercase text-gray-300 hover:text-gold-400">ΚΟΥΖΙΝΕΣ</button>
+            <button onclick="showTab('wardrobes'); toggleMobileMenu()" class="block text-left w-full py-2 text-sm font-medium tracking-wider uppercase text-gray-300 hover:text-gold-400">ΝΤΟΥΛΑΠΕΣ</button>
+            <button onclick="showTab('doors'); toggleMobileMenu()" class="block text-left w-full py-2 text-sm font-medium tracking-wider uppercase text-gray-300 hover:text-gold-400">ΠΟΡΤΕΣ</button>
+            <button onclick="showTab('custom'); toggleMobileMenu()" class="block text-left w-full py-2 text-sm font-medium tracking-wider uppercase text-gray-300 hover:text-gold-400">ΕΙΔΙΚΕΣ ΚΑΤΑΣΚΕΥΕΣ</button>
+            <button onclick="showTab('contact'); toggleMobileMenu()" class="block text-left w-full py-2 text-sm font-medium tracking-wider uppercase text-gray-300 hover:text-gold-400">ΕΠΙΚΟΙΝΩΝΙΑ</button>
+            <a href="tel:+302100000000" class="mt-4 flex items-center justify-center gap-2 w-full py-3 text-xs font-semibold uppercase text-obsidian-900 bg-gold-500 rounded-sm">
+                <i class="fa-solid fa-phone"></i>
+                <span>ΚΛΗΣΗ: 210 0000000</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- CONTENT PAGES WRAPPER -->
+    <main class="pt-24 min-h-screen">
+
+        <!-- ================= PAGE 1: HOME ================= -->
+        <section id="page-home" class="tab-content block">
+            <div class="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-gold-500/20">
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-obsidian-900/80 to-obsidian-900/40"></div>
+                
+                <div class="relative max-w-5xl mx-auto px-4 text-center z-10 py-20">
+                    <span class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold uppercase tracking-[0.3em] text-gold-400 bg-obsidian-800/80 border border-gold-500/30 rounded-full backdrop-blur-sm">
+                        High-End Architectural Joinery
+                    </span>
+                    <h1 class="font-serif-title text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-wide mb-6 leading-tight">
+                        Δημιουργούμε Χώρους Υψηλής Αισθητικής & <span class="gold-gradient-text">Διαχρονικής Ποιότητας</span>
+                    </h1>
+                    <p class="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                        Εκθεσιακή παρουσίαση αρχιτεκτονικών ξυλουργικών κατασκευών. Εξειδίκευση σε χειροποίητες κουζίνες, ντουλάπες, πόρτες και ειδικά σχεδιασμένα έπιπλα.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center gap-4">
+                        <button onclick="showTab('kitchens')" class="px-8 py-4 text-sm font-semibold uppercase tracking-wider text-obsidian-900 bg-gold-500 hover:bg-gold-400 transition-all rounded-sm shadow-lg">
+                            Εξερευνήστε τις Συλλογές
+                        </button>
+                        <button onclick="showTab('contact')" class="px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white bg-obsidian-800/80 hover:bg-obsidian-700 border border-gold-500/40 rounded-sm backdrop-blur-sm transition-all">
+                            Επικοινωνία
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Categories Grid -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-white mb-4">Κατηγορίες Κατασκευών</h2>
+                    <div class="w-24 h-0.5 bg-gold-500 mx-auto"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div onclick="showTab('kitchens')" class="group cursor-pointer bg-obsidian-800 border border-gold-500/20 rounded-sm overflow-hidden hover:border-gold-500/60 transition-all duration-300">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif-title text-2xl font-bold text-white group-hover:text-gold-400 transition-colors mb-2">Έπιπλα Κουζίνας</h3>
+                            <p class="text-sm text-gray-400 mb-4">Μοντέρνες & κλασικές συνθέσεις με εργονομικό σχεδιασμό και κορυφαία υλικά.</p>
+                            <span class="text-xs font-semibold tracking-wider text-gold-400 uppercase flex items-center gap-2">Δειτε περισσοτερα <i class="fa-solid fa-arrow-right text-xs"></i></span>
+                        </div>
+                    </div>
+
+                    <div onclick="showTab('wardrobes')" class="group cursor-pointer bg-obsidian-800 border border-gold-500/20 rounded-sm overflow-hidden hover:border-gold-500/60 transition-all duration-300">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif-title text-2xl font-bold text-white group-hover:text-gold-400 transition-colors mb-2">Ντουλάπες & Walk-in</h3>
+                            <p class="text-sm text-gray-400 mb-4">Ανοιγόμενες, συρόμενες και βεστιάρια με κρυφό φωτισμό LED.</p>
+                            <span class="text-xs font-semibold tracking-wider text-gold-400 uppercase flex items-center gap-2">Δειτε περισσοτερα <i class="fa-solid fa-arrow-right text-xs"></i></span>
+                        </div>
+                    </div>
+
+                    <div onclick="showTab('doors')" class="group cursor-pointer bg-obsidian-800 border border-gold-500/20 rounded-sm overflow-hidden hover:border-gold-500/60 transition-all duration-300">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif-title text-2xl font-bold text-white group-hover:text-gold-400 transition-colors mb-2">Εσωτερικές & Pivot Πόρτες</h3>
+                            <p class="text-sm text-gray-400 mb-4">Πόρτες Filomuro, Pivot μεγάλων διαστάσεων και θωρακισμένες ασφαλείας.</p>
+                            <span class="text-xs font-semibold tracking-wider text-gold-400 uppercase flex items-center gap-2">Δειτε περισσοτερα <i class="fa-solid fa-arrow-right text-xs"></i></span>
+                        </div>
+                    </div>
+
+                    <div onclick="showTab('custom')" class="group cursor-pointer bg-obsidian-800 border border-gold-500/20 rounded-sm overflow-hidden hover:border-gold-500/60 transition-all duration-300">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif-title text-2xl font-bold text-white group-hover:text-gold-400 transition-colors mb-2">Ειδικές Κατασκευές</h3>
+                            <p class="text-sm text-gray-400 mb-4">Ξύλινες επενδύσεις τοίχων, συνθέσεις TV και custom έπιπλα.</p>
+                            <span class="text-xs font-semibold tracking-wider text-gold-400 uppercase flex items-center gap-2">Δειτε περισσοτερα <i class="fa-solid fa-arrow-right text-xs"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 2: KITCHENS ================= -->
+        <section id="page-kitchens" class="tab-content hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400">Showroom Showcase</span>
+                    <h1 class="font-serif-title text-4xl sm:text-6xl font-bold text-white mt-2 mb-4">Έπιπλα Κουζίνας</h1>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                        Μάθετε πώς σχεδιάζουμε και κατασκευάζουμε κουζίνες υψηλής αισθητικής και αντοχής.
+                    </p>
+                    <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-6"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16 bg-obsidian-800/60 p-8 sm:p-12 border border-gold-500/20 rounded-sm">
+                    <div>
+                        <h2 class="font-serif-title text-3xl font-bold text-gold-400 mb-6">Πώς τις φτιάχνουμε & με τι υλικά</h2>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Στην <strong class="text-white">WOODPAN</strong>, κάθε κουζίνα αποτελεί μια μοναδική αρχιτεκτονική μελέτη. Ξεκινάμε με την ακριβή αποτύπωση του χώρου σας και τον 3D φωτορεαλιστικό σχεδιασμό, εξασφαλίζοντας απόλυτη εργονομία.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Χρησιμοποιούμε πιστοποιημένα ανθυγρά υλικά υψηλής πυκνότητας (MDF, θαλάσσης, μελαμίνες premium) και μηχανισμούς τελευταίας τεχνολογίας με εφ’ όρου ζωής εγγύηση.
+                        </p>
+
+                        <div class="space-y-4 border-t border-gold-500/20 pt-6">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-gold-500 mt-1"></i>
+                                <div>
+                                    <strong class="text-white block text-sm">Υλικά Σκελετού & Πορτών:</strong>
+                                    <span class="text-xs text-gray-400">Φυσικοί καπλαμάδες (Δρυς, Καρυδιά), Fenix NTM (Anti-fingerprint matte), Λάκες πολυουρεθάνης και μασίφ ξυλεία.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-gold-500 mt-1"></i>
+                                <div>
+                                    <strong class="text-white block text-sm">Μηχανισμοί & Αξεσουάρ:</strong>
+                                    <span class="text-xs text-gray-400">Συρτάρια και μεντεσέδες Blum & Hafele με σύστημα soft-close και κρυφούς μηχανισμούς push-to-open.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 3: WARDROBES ================= -->
+        <section id="page-wardrobes" class="tab-content hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400">Showroom Showcase</span>
+                    <h1 class="font-serif-title text-4xl sm:text-6xl font-bold text-white mt-2 mb-4">Ντουλάπες & Walk-in Closets</h1>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                        Οργάνωση, εργονομία και πολυτέλεια για το υπνοδωμάτιο.
+                    </p>
+                    <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-6"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16 bg-obsidian-800/60 p-8 sm:p-12 border border-gold-500/20 rounded-sm">
+                    <div>
+                        <h2 class="font-serif-title text-3xl font-bold text-gold-400 mb-6">Πώς τις φτιάχνουμε & με τι υλικά</h2>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Σχεδιάζουμε ντουλάπες προσαρμοσμένες ακριβώς στις διαστάσεις του χώρου σας. Είτε πρόκειται για ανοιγόμενες, συρόμενες ή ανοιχτά βεστιάρια (Walk-in Closets), δίνουμε έμφαση στην εσωτερική διαρρύθμιση και τη μέγιστη αξιοποίηση του χώρου.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Ενσωματώνουμε γραμμικό φωτισμό LED με αισθητήρες κίνησης, φιμέ κρύσταλλα με αλουμινένιο πλαίσιο, και εσωτερικά αξεσουάρ οργάνωσης.
+                        </p>
+
+                        <div class="space-y-4 border-t border-gold-500/20 pt-6">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-gold-500 mt-1"></i>
+                                <div>
+                                    <strong class="text-white block text-sm">Επιλογές Πορτών:</strong>
+                                    <span class="text-xs text-gray-400">Φινιρίσματα σε λάκα, φυσικό καπλαμά, γυαλί bronze/χρωματιστό, και υφασμάτινες/δερμάτινες επενδύσεις.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-gold-500 mt-1"></i>
+                                <div>
+                                    <strong class="text-white block text-sm">Εσωτερική Διαμόρφωση:</strong>
+                                    <span class="text-xs text-gray-400">Συρταριέρες με χωρίσματα, κοσμηματοθήκες, ασανσέρ ντουλάπας, παπουτσοθήκες και κρυφούς φωτισμούς.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 4: DOORS ================= -->
+        <section id="page-doors" class="tab-content hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400">Showroom Showcase</span>
+                    <h1 class="font-serif-title text-4xl sm:text-6xl font-bold text-white mt-2 mb-4">Εσωτερικές & Pivot Πόρτες</h1>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                        Αρχιτεκτονικά συστήματα πορτών για σύγχρονες κατοικίες.
+                    </p>
+                    <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-6"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16 bg-obsidian-800/60 p-8 sm:p-12 border border-gold-500/20 rounded-sm">
+                    <div>
+                        <h2 class="font-serif-title text-3xl font-bold text-gold-400 mb-6">Πώς τις φτιάχνουμε & με τι υλικά</h2>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Οι πόρτες της <strong class="text-white">WOODPAN</strong> συνδυάζουν υψηλή ηχομόνωση, σταθερότητα και απαράμιλλη αισθητική. Κατασκευάζουμε εσωτερικές πόρτες με κάσα αλουμινίου ή ξύλου, καθώς και πόρτες Pivot μεγάλων διαστάσεων.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Διαθέτουμε λύσεις Filomuro (χωνευτές/ισόπεδες με τον τοίχο) που "εξαφανίζονται" στον χώρο, προσφέροντας απόλυτα minimal αποτέλεσμα.
+                        </p>
+
+                        <div class="space-y-4 border-t border-gold-500/20 pt-6">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-gold-500 mt-1"></i>
+                                <div>
+                                    <strong class="text-white block text-sm">Τεχνικά Χαρακτηριστικά:</strong>
+                                    <span class="text-xs text-gray-400">Κρυφοί ρυθμιζόμενοι μεντεσέδες, μαγνητικές κλειδαριές αθόρυβης λειτουργίας, λάστιχα στεγανοποίησης.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-gold-500 mt-1"></i>
+                                <div>
+                                    <strong class="text-white block text-sm">Φινιρίσματα:</strong>
+                                    <span class="text-xs text-gray-400">Καπλαμάδες καρυδιάς/δρυός, ματ λάκες, CPL/HPL υψηλής αντοχής και επενδύσεις με fluted panels.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 5: CUSTOM WORKS ================= -->
+        <section id="page-custom" class="tab-content hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400">Showroom Showcase</span>
+                    <h1 class="font-serif-title text-4xl sm:text-6xl font-bold text-white mt-2 mb-4">Ειδικές Ξυλουργικές Κατασκευές</h1>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                        Custom αρχιτεκτονικές επενδύσεις, συνθέσεις καθιστικού & έπιπλα μπάνιου.
+                    </p>
+                    <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-6"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16 bg-obsidian-800/60 p-8 sm:p-12 border border-gold-500/20 rounded-sm">
+                    <div>
+                        <h2 class="font-serif-title text-3xl font-bold text-gold-400 mb-6">Πώς τις φτιάχνουμε & με τι υλικά</h2>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Αναλαμβάνουμε ειδικές κατασκευές που δίνουν χαρακτήρα σε κάθε εσωτερικό χώρο. Από επενδύσεις τοίχων με ράβδους ξύλου (Fluted / Ribbed Wall Panels) μέχρι κρυφές πόρτες, συνθέσεις τζακιού & TV.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Κάθε έργο μελετάται με ακρίβεια χιλιοστού και κατασκευάζεται με συνδυασμό ξύλου, μετάλλου, μαρμάρου και κρυφού φωτισμού LED.
+                        </p>
+
+                        <div class="space-y-4 border-t border-gold-500/20 pt-6">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-gold-500 mt-1"></i>
+                                <div>
+                                    <strong class="text-white block text-sm">Επενδύσεις Τοίχων & Panels:</strong>
+                                    <span class="text-xs text-gray-400">Ακουστικά panels, ξύλινες διακοσμητικές ράβδοι και επενδύσεις με φυσικό καπλαμά καρυδιάς.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-gold-500 mt-1"></i>
+                                <div>
+                                    <strong class="text-white block text-sm">Έπιπλα Μπάνιου & Custom Κατασκευές:</strong>
+                                    <span class="text-xs text-gray-400">Κατασκευές από ανθυγρό κόντρα πλακέ θαλάσσης, Corian και φυσική ξυλεία ειδικής επεξεργασίας.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80" class="w-full h-48 sm:h-64 object-cover border border-gold-500/20 rounded-sm">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 6: STANDALONE CONTACT PAGE ================= -->
+        <section id="page-contact" class="tab-content hidden">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400">Showroom & Workshop</span>
+                    <h1 class="font-serif-title text-4xl sm:text-6xl font-bold text-white mt-2 mb-4">Επικοινωνία</h1>
+                    <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base">
+                        Επισκεφθείτε τον εκθεσιακό μας χώρο ή επικοινωνήστε μαζί μας για να συζητήσουμε το έργο σας.
+                    </p>
+                    <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-6"></div>
+                </div>
+
+                <!-- Contact Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-obsidian-800 p-8 border border-gold-500/30 rounded-sm gold-border-glow">
+                        <h3 class="font-serif-title text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <i class="fa-solid fa-headset text-gold-400"></i>
+                            <span>Άμεση Επικοινωνία</span>
+                        </h3>
+
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gold-500/10 border border-gold-500/30 rounded-sm flex items-center justify-center text-gold-400 text-xl">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-gray-400 uppercase tracking-wider block">Τηλέφωνο Επικοινωνίας</span>
+                                    <a href="tel:+302100000000" class="text-lg font-bold text-white hover:text-gold-400 transition-colors">210 0000000</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-green-500/10 border border-green-500/30 rounded-sm flex items-center justify-center text-green-400 text-xl">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-gray-400 uppercase tracking-wider block">WhatsApp Direct Chat</span>
+                                    <a href="https://wa.me/306900000000" target="_blank" class="text-lg font-bold text-white hover:text-green-400 transition-colors">+30 6900 000000</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-purple-500/10 border border-purple-500/30 rounded-sm flex items-center justify-center text-purple-400 text-xl">
+                                    <i class="fa-brands fa-viber"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-gray-400 uppercase tracking-wider block">Viber Messaging</span>
+                                    <a href="viber://chat?number=%2B306900000000" class="text-lg font-bold text-white hover:text-purple-400 transition-colors">+30 6900 000000</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gold-500/10 border border-gold-500/30 rounded-sm flex items-center justify-center text-gold-400 text-xl">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-gray-400 uppercase tracking-wider block">Email</span>
+                                    <a href="mailto:info@woodpan.gr" class="text-base font-medium text-white hover:text-gold-400 transition-colors">info@woodpan.gr</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-obsidian-800 p-8 border border-gold-500/30 rounded-sm gold-border-glow">
+                        <h3 class="font-serif-title text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <i class="fa-solid fa-location-dot text-gold-400"></i>
+                            <span>Έκθεση & Βιοτεχνία</span>
+                        </h3>
+
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-xs text-gray-400 uppercase tracking-wider block mb-1">Διεύθυνση</span>
+                                <p class="text-white font-medium">Λεωφόρος Αθηνών 100, Αθήνα 10442</p>
+                            </div>
+
+                            <div class="border-t border-gold-500/20 pt-4">
+                                <span class="text-xs text-gray-400 uppercase tracking-wider block mb-3">Ωράριο Λειτουργίας</span>
+                                <div class="space-y-2 text-sm text-gray-300">
+                                    <div class="flex justify-between">
+                                        <span>Δευτέρα - Παρασκευή:</span>
+                                        <span class="text-white font-semibold">08:00 - 20:00</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Σάββατο:</span>
+                                        <span class="text-white font-semibold">09:00 - 15:00</span>
+                                    </div>
+                                    <div class="flex justify-between text-gray-500">
+                                        <span>Κυριακή:</span>
+                                        <span>Κλειστά</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- GLOBAL CONTACT FOOTER (Εμφανίζεται ΤΕΡΜΑ ΚΑΤΩ ΣΕ ΟΛΕΣ ΤΙΣ ΣΕΛΙΔΕΣ) -->
+    <footer class="bg-obsidian-800 border-t border-gold-500/30 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1: Brand Info -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-sm border border-gold-500/60 bg-gradient-to-br from-obsidian-700 to-obsidian-900 flex items-center justify-center">
+                            <span class="font-serif-title text-xl font-bold gold-gradient-text">W</span>
+                        </div>
+                        <span class="font-serif-title text-2xl font-bold tracking-widest text-white">WOOD<span class="gold-gradient-text">PAN</span></span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                        Εξειδίκευση σε αρχιτεκτονικές ξυλουργικές κατασκευές υψηλής αισθητικής. Κουζίνες, ντουλάπες, πόρτες & ειδικά έπιπλα.
+                    </p>
+                </div>
+
+                <!-- Col 2: Direct Contact Buttons -->
+                <div>
+                    <h4 class="font-serif-title text-lg font-bold text-gold-400 mb-4 uppercase tracking-wider">Άμεση Επικοινωνία</h4>
+                    <ul class="space-y-3 text-xs">
+                        <li>
+                            <a href="tel:+302100000000" class="text-gray-300 hover:text-gold-400 transition-colors flex items-center gap-2">
+                                <i class="fa-solid fa-phone text-gold-500 w-4"></i>
+                                <span>210 0000000</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/306900000000" target="_blank" class="text-gray-300 hover:text-green-400 transition-colors flex items-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-green-500 w-4"></i>
+                                <span>WhatsApp: +30 6900 000000</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="viber://chat?number=%2B306900000000" class="text-gray-300 hover:text-purple-400 transition-colors flex items-center gap-2">
+                                <i class="fa-brands fa-viber text-purple-500 w-4"></i>
+                                <span>Viber: +30 6900 000000</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:info@woodpan.gr" class="text-gray-300 hover:text-gold-400 transition-colors flex items-center gap-2">
+                                <i class="fa-regular fa-envelope text-gold-500 w-4"></i>
+                                <span>info@woodpan.gr</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Location & Hours -->
+                <div>
+                    <h4 class="font-serif-title text-lg font-bold text-gold-400 mb-4 uppercase tracking-wider">Έκθεση & Ωράριο</h4>
+                    <p class="text-xs text-gray-300 mb-3">
+                        <i class="fa-solid fa-location-dot text-gold-500 mr-1"></i> Λεωφόρος Αθηνών 100, Αθήνα 10442
+                    </p>
+                    <div class="text-xs text-gray-400 space-y-1">
+                        <p><strong class="text-gray-200">Δευτ - Παρ:</strong> 08:00 - 20:00</p>
+                        <p><strong class="text-gray-200">Σάββατο:</strong> 09:00 - 15:00</p>
+                        <p><strong class="text-gray-200">Κυριακή:</strong> Κλειστά</p>
+                    </div>
+                </div>
+
+                <!-- Col 4: Quick Navigation Links -->
+                <div>
+                    <h4 class="font-serif-title text-lg font-bold text-gold-400 mb-4 uppercase tracking-wider">Πλοήγηση</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><button onclick="showTab('home')" class="text-gray-400 hover:text-white transition-colors">Αρχική</button></li>
+                        <li><button onclick="showTab('kitchens')" class="text-gray-400 hover:text-white transition-colors">Έπιπλα Κουζίνας</button></li>
+                        <li><button onclick="showTab('wardrobes')" class="text-gray-400 hover:text-white transition-colors">Ντουλάπες & Walk-in</button></li>
+                        <li><button onclick="showTab('doors')" class="text-gray-400 hover:text-white transition-colors">Εσωτερικές & Pivot Πόρτες</button></li>
+                        <li><button onclick="showTab('custom')" class="text-gray-400 hover:text-white transition-colors">Ειδικές Κατασκευές</button></li>
+                        <li><button onclick="showTab('contact')" class="text-gray-400 hover:text-white transition-colors">Σελίδα Επικοινωνίας</button></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gold-500/10 pt-6 text-center text-xs text-gray-500">
+                <p>© 2026 WOODPAN Architectural Woodcraft. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR PAGE SWITCHING -->
+    <script>
+        function showTab(tabId) {
+            // Hide all tab content sections
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+
+            // Show selected section
+            const selectedTab = document.getElementById('page-' + tabId);
+            if (selectedTab) {
+                selectedTab.classList.remove('hidden');
+            }
+
+            // Update active state in Navigation links
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('text-gold-400', 'border-gold-500');
+                btn.classList.add('text-gray-300', 'border-transparent');
+            });
+
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-gray-300', 'border-transparent');
+                activeBtn.classList.add('text-gold-400', 'border-gold-500');
+            }
+
+            // Scroll smoothly to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
